@@ -1,0 +1,12 @@
+{
+  "HEADER": {
+    "LOGIN": "Login",
+    "CONTACT": {
+      "CONTACT": "Contact",
+      "EMAIL": "Email",
+      "PHONE": "Phone"
+    },
+    "CATEGORY": "Category",
+    "SEARCH": "Search"
+  }
+}

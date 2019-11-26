@@ -1,0 +1,66 @@
+<div class="carousel">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleIndicators" *ngFor="let item of categories;let i = index" [attr.data-slide-to]="i" [ngClass]="{'active':i==0}"></li>
+    </ol>
+    <div class="carousel-inner" role="listbox">
+      <div *ngFor="let item of categories; let i = index" data-interval="5000" [ngClass]="i == 0 ? 'carousel-item active' : 'carousel-item'">
+        <a class="d-block w-100 img" [ngStyle]="{'background-image': 'url('+item.img+')', 'background-size':'1000px 400px'}"></a>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>{{item.name}}</h5>
+          <p>{{item.detail}}</p>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" style="background: #343a40" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" style="background: #343a40" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<section id="list-product">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3" *ngFor="let product of products">
+        <div class="product-block">
+          <div class="left-block">
+            <a class="product_img_link" target="_blank"><img class="img-responsive" src="{{product.img}}" border="0" alt="Affiliates banner 300x250" /></a>
+            <a class="quick-view btn-tooltip"><i class="fa fa-eye"></i></a>
+            <span class="label-new label">New</span>
+          </div>
+          <div class="right-block">
+            <div class="product-meta">
+              <h5 class="name">
+                <a href="http://www.leotheme.com/prestashop/themes.html?wiz_id=17261" class="product-name" target="_blank">{{product.name}}</a>
+              </h5>
+              <div class="comments_note product-rating clearfix">
+                <div class="star_content">
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                  <div class="star"></div>
+                </div>
+              </div>
+              <div class="content_price">
+                <span class="price product-price"> {{product.price}}VND
+                </span>
+<!--                <span class="old-price product-price">{{product.price}}</span>-->
+<!--                <span class="price-percent-reduction">5%</span>-->
+              </div>
+              <div class="functional-buttons clearfix">
+                <a (click)="addToCart(product)"  class="button ajax_add_to_cart_button"><span>Add to cart</span></a>
+                <a target="_blank" href="http://www.leotheme.com/prestashop/themes.html?wiz_id=17261" class="btn-tooltip addToWishlist"><i class="fa fa-heart"></i></a>
+                <a target="_blank" href="http://www.leotheme.com/prestashop/themes.html?wiz_id=17261" class="add_to_compare compare btn-tooltip"><i class="fa fa-refresh"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

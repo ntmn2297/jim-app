@@ -1,0 +1,12 @@
+{
+  "HEADER": {
+    "LOGIN": "Đăng Nhập",
+    "CONTACT": {
+      "CONTACT": "Liên Lạc",
+      "EMAIL": "Thư Điện Tử",
+      "PHONE": "Điện Thoại"
+    },
+    "CATEGORY": "Danh Mục",
+    "SEARCH": "Tìm Kiếm"
+  }
+}

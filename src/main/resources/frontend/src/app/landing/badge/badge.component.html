@@ -1,0 +1,12 @@
+<div class="dropdown dropright">
+  <button type="button" (click)="showCart()" class="btn btn-primary">
+    <fa-icon style="padding-right: 5px" [icon]="faShoppingCart"></fa-icon> <span class="badge badge-light">{{cart.length}}</span>
+  </button>
+  <div class="dropdown-content">
+    <div *ngFor="let product of cart" class="container">
+      <a>
+        <span>{{product.detail}}</span>
+      </a>
+    </div>
+  </div>
+</div>

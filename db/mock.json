@@ -1,0 +1,66 @@
+[
+    {
+        "name": "Smart Tivi Samsung 55 inch",
+        "detail": "Smart Tivi Samsung 55 inch",
+        "price": 10999000,
+        "quantity": 5,
+        "img": "assets/image/product/product_18.jpg",
+        "category_id": 3
+    },
+    {
+        "name": "Smart Tivi LG 43 inch",
+        "detail": "Smart Tivi LG 43 inch",
+        "price": 8490000,
+        "quantity": 5,
+        "img": "assets/image/product/product_19.jpg",
+        "category_id": 3
+    },
+    {
+        "name": "Smart Tivi LG 55 inch",
+        "detail": "Smart Tivi LG 55 inch",
+        "price": 12248000,
+        "quantity": 5,
+        "img": "assets/image/product/product_20.jpg",
+        "category_id": 3
+    },
+    {
+        "name": "Android Tivi Box Xiaomi",
+        "detail": "Android Tivi Box Xiaomi",
+        "price": 1350000,
+        "quantity": 5,
+        "img": "assets/image/product/product_21.jpg",
+        "category_id": 3
+    },
+    {
+        "name": "Giá treo Tivi",
+        "detail": "Giá treo Tivi",
+        "price": 295000,
+        "quantity": 5,
+        "img": "assets/image/product/product_22.jpg",
+        "category_id": 3
+    },
+    {
+        "name": "Máy lạnh inverter Sharp AH-X9VEW",
+        "detail": "Máy lạnh inverter Sharp AH-X9VEW",
+        "price": 6049000,
+        "quantity": 5,
+        "img": "assets/image/product/product_23.jpg",
+        "category_id": 3
+    },
+    {
+        "name": "Smart Tivi Samsung 49 inch",
+        "detail": "Smart Tivi Samsung 49 inch",
+        "price": 9790000,
+        "quantity": 5,
+        "img": "assets/image/product/product_24.jpg",
+        "category_id": 3
+    },
+    {
+        "name": "Loa Soundbar 2.1",
+        "detail": "Loa Soundbar 2.1",
+        "price": 1580000,
+        "quantity": 5,
+        "img": "assets/image/product/product_17.jpg",
+        "category_id": 3
+    }
+]
