@@ -1,10 +1,12 @@
 package com.example.jimapp.product;
 
+import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/product")
@@ -26,9 +28,9 @@ public class ProductController {
         return productRepository.saveAll(products);
     }
 
-    @PostMapping("/find")
-    public Iterable<Product> findProduct(@RequestBody String productName){
-        return productRepository.findByName(productName);
+    @GetMapping("/{id}")
+    public Optional<Product> findById(@PathVariable Long id){
+        return productRepository.findById(id);
     }
 
 }

@@ -2,10 +2,7 @@ package com.example.jimapp.product;
 
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Product {
@@ -94,3 +91,4 @@ public class Product {
         this.categoryId = categoryId;
     }
 }
+

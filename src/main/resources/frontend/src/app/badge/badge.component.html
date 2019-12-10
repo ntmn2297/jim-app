@@ -1,0 +1,22 @@
+<div class="dropdown">
+  <button type="button" class="btn btn-primary" (click)="showCart()">
+    <fa-icon style="padding-right: 5px" [icon]="faShoppingCart"></fa-icon> <span class="badge badge-light">{{cart.length}}</span>
+  </button>
+  <div class="btn-group dropright">
+    <button style="width: 66px" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <fa-icon style="padding-right: 5px" [icon]="faBookMark"></fa-icon>
+    </button>
+    <div class="dropdown-menu" >
+      <a class="dropdown-item" *ngFor="let category of categories" (click)="changeCategory(category)">{{category.name}}</a>
+    </div>
+  </div>
+  <div class="btn-group dropright">
+    <button style="width: 66px" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <fa-icon style="padding-right: 5px" [icon]="faAddressBook"></fa-icon>
+    </button>
+    <div class="dropdown-menu" >
+      <a class="dropdown-item" href="#">{{'HEADER.CONTACT.EMAIL' | translate}}</a>
+      <a class="dropdown-item" href="#">{{'HEADER.CONTACT.PHONE' | translate}}</a>
+    </div>
+  </div>
+</div>

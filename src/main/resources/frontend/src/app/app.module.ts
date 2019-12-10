@@ -10,15 +10,17 @@ import {EventBusService} from "./service/event-bus.service";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import {CompleterService, LocalDataFactory, RemoteDataFactory} from "ng2-completer";
+import {LoginDialogComponent} from "./login-dialog/login-dialog.component";
+import {BadgeComponent} from "./badge/badge.component";
 
-// AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, LoginDialogComponent, BadgeComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -36,7 +38,8 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [EventBusService],
-  bootstrap: [AppComponent]
+  providers: [EventBusService, CompleterService, LocalDataFactory, RemoteDataFactory],
+  bootstrap: [AppComponent],
+  entryComponents: [LoginDialogComponent]
 })
 export class AppModule {}

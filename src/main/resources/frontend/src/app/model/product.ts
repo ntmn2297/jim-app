@@ -5,9 +5,6 @@ interface Product {
   price: number;
   quantity: number;
   img: string;
-  category_id: number;
+  categoryId: number;
 }
 
-interface Products {
-  products: Product[];
-}

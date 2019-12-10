@@ -28,8 +28,8 @@
       <div class="col-md-3" *ngFor="let product of products">
         <div class="product-block">
           <div class="left-block">
-            <a class="product_img_link" target="_blank"><img class="img-responsive" src="{{product.img}}" border="0" alt="Affiliates banner 300x250" /></a>
-            <a class="quick-view btn-tooltip"><i class="fa fa-eye"></i></a>
+            <a class="product_img_link" target="_blank"><img class="img-responsive" src="{{product.img}}" alt="Affiliates banner 300x250" /></a>
+            <a class="quick-view btn-tooltip" ><i class="fa fa-eye"></i></a>
             <span class="label-new label">New</span>
           </div>
           <div class="right-block">
@@ -37,24 +37,12 @@
               <h5 class="name">
                 <a href="http://www.leotheme.com/prestashop/themes.html?wiz_id=17261" class="product-name" target="_blank">{{product.name}}</a>
               </h5>
-              <div class="comments_note product-rating clearfix">
-                <div class="star_content">
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                  <div class="star"></div>
-                </div>
-              </div>
               <div class="content_price">
-                <span class="price product-price"> {{product.price}}VND
+                <span class="price product-price"> {{product.price | number}} VND
                 </span>
-<!--                <span class="old-price product-price">{{product.price}}</span>-->
-<!--                <span class="price-percent-reduction">5%</span>-->
               </div>
               <div class="functional-buttons clearfix">
                 <a (click)="addToCart(product)"  class="button ajax_add_to_cart_button"><span>Add to cart</span></a>
-                <a target="_blank" href="http://www.leotheme.com/prestashop/themes.html?wiz_id=17261" class="btn-tooltip addToWishlist"><i class="fa fa-heart"></i></a>
                 <a target="_blank" href="http://www.leotheme.com/prestashop/themes.html?wiz_id=17261" class="add_to_compare compare btn-tooltip"><i class="fa fa-refresh"></i></a>
               </div>
             </div>
