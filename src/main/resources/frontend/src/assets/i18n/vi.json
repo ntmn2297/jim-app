@@ -9,12 +9,5 @@
     "CATEGORY": "Danh Mục",
     "SEARCH": "Tìm Kiếm",
     "ADMIN": "Quản Lý"
-  },
-  "BACKOFFICE": {
-    "ORDERS": "Đơn Hàng",
-    "PRODUCTS": "Sản Phẩm",
-    "CUSTOMERS": "Khách Hàng",
-    "REPORTS": "Doanh Thu",
-    "INTEGRATIONS": "Tổng Hợp"
   }
 }

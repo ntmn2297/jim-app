@@ -22,7 +22,7 @@
                 </figure>
               </td>
               <td data-th="Quantity">
-                <input type="number" min="0" class="form-control text-center" [(ngModel)]="product.amount">
+                <input type="number" min="0" class="form-control text-center" (ngModelChange)="changeProductAmount(product)" [(ngModel)]="product.amount">
               </td>
               <td>
                 <div class="price-wrap"> <var class="price">{{product.product.price * product.amount | number}} VND</var> <small class="text-muted">Each:{{product.product.price | number}}VND</small> </div>

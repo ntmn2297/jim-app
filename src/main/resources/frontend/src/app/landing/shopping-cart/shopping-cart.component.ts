@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {EventBusService} from "../../service/event-bus.service";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -11,12 +12,32 @@ export class ShoppingCartComponent implements OnInit {
   listCart: Cart[] = [];
   cart: Product[] = [];
 
-  constructor() { }
+  constructor(private eventBus: EventBusService) { }
 
   ngOnInit() {
     this.listCart.forEach(r => {
       this.totalPrice += r.totalPrice;
     })
+  }
+
+  changeProductAmount(product: Cart){
+    let count: number = 0;
+    this.cart.forEach(rs=>{
+      if(rs.id === product.product.id) count += 1;
+    });
+    if(count > product.amount){
+      this.cart.splice(this.cart.indexOf(product.product), count - product.amount);
+      this.totalPrice -= product.product.price;
+    } else if (count < product.amount){
+      for (let i = 0; i < (product.amount - count); i++) this.cart.push(product.product);
+      this.totalPrice += product.product.price;
+    }
+    if(product.amount == 0) {
+      this.removeProduct(product);
+    } else {
+      localStorage.setItem('listProductOfCart', JSON.stringify(this.cart));
+      localStorage.setItem('listCart', JSON.stringify(this.listCart));
+    }
   }
 
   removeProduct(cart: Cart){

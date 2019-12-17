@@ -1,8 +1,8 @@
   import { Component, OnInit } from '@angular/core';
   import {faAddressBook, faBookmark, faShoppingCart} from '@fortawesome/free-solid-svg-icons';
-  import {EventBusService} from "../service/event-bus.service";
+  import {EventBusService} from "../../service/event-bus.service";
   import {BsModalRef, BsModalService, ModalOptions} from "ngx-bootstrap";
-  import {ShoppingCartComponent} from "../landing/shopping-cart/shopping-cart.component";
+  import {ShoppingCartComponent} from "../shopping-cart/shopping-cart.component";
 
 @Component({
   selector: 'app-badge',
@@ -41,15 +41,6 @@ export class BadgeComponent implements OnInit {
     };
     this.modalService.show(ShoppingCartComponent, this.dialogConfig);
     (document.querySelector('.modal-dialog') as HTMLElement).style.minWidth = '1000px';
-  }
-
-  removeProduct(cart: Cart){
-    this.listCart.splice(this.listCart.indexOf(cart), 1);
-    this.cart.forEach(r => {
-      if(r.id == cart.product.id) this.cart.splice(this.cart.indexOf(r), cart.amount);
-    });
-    localStorage.setItem('listProductOfCart', JSON.stringify(this.cart));
-    localStorage.setItem('listCart', JSON.stringify(this.listCart));
   }
 
   changeCategory(category: Category){

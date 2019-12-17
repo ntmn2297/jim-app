@@ -25,6 +25,10 @@ export class AppComponent implements OnInit{
     translate.setDefaultLang('en');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|vi/) ? browserLang : 'en');
+    this.http.get<Category[]>('/api/category/list').subscribe(rs => {
+      this.categories = rs;
+      this.eventBus.pushChange('categories', this.categories);
+    });
   }
 
   ngOnInit() {

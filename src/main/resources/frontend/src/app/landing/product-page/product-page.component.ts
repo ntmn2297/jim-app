@@ -17,10 +17,6 @@ export class ProductPageComponent implements OnInit {
   constructor( private http: HttpClient, private eventBus: EventBusService) { }
 
   ngOnInit() {
-    this.http.get<Category[]>('/api/category/list').subscribe(rs => {
-      this.categories = rs;
-      this.eventBus.pushChange('categories', this.categories);
-    });
     this.http.get<Product[]>('/api/product/list').subscribe(rs => {
       this.products = rs;
     });

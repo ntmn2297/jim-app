@@ -11,8 +11,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CompleterService, LocalDataFactory, RemoteDataFactory} from "ng2-completer";
-import {LoginDialogComponent} from "./login-dialog/login-dialog.component";
-import {BadgeComponent} from "./badge/badge.component";
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import {ShoppingCartComponent} from "./landing/shopping-cart/shopping-cart.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -20,7 +20,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent, LoginDialogComponent, BadgeComponent
+    AppComponent,
+    LoginDialogComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -40,6 +41,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [EventBusService, CompleterService, LocalDataFactory, RemoteDataFactory],
   bootstrap: [AppComponent],
-  entryComponents: [LoginDialogComponent]
+  entryComponents: [ LoginDialogComponent]
 })
 export class AppModule {}

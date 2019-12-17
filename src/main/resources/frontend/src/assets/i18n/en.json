@@ -9,12 +9,5 @@
     "CATEGORY": "Category",
     "SEARCH": "Search",
     "ADMIN": "Admin"
-  },
-  "BACKOFFICE": {
-    "ORDERS": "Orders",
-    "PRODUCTS": "Products",
-    "CUSTOMERS": "Customers",
-    "REPORTS": "Reports",
-    "INTEGRATIONS": "Integrations"
   }
 }
