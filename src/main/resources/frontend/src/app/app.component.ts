@@ -18,6 +18,7 @@ export class AppComponent implements OnInit{
   categories: Category[] = [];
   searchStr: string;
   dataService: CompleterData;
+  timeAccess: Date = new Date();
 
   constructor(private modalService: BsModalService, private http: HttpClient, private eventBus : EventBusService, private completerService: CompleterService, private translate: TranslateService) {
     this.dataService = this.completerService.remote('/api/product/list','name','name');
@@ -25,18 +26,21 @@ export class AppComponent implements OnInit{
     translate.setDefaultLang('en');
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|vi/) ? browserLang : 'en');
-    this.http.get<Category[]>('/api/category/list').subscribe(rs => {
-      this.categories = rs;
-      this.eventBus.pushChange('categories', this.categories);
-    });
+    window.addEventListener('beforeunload', (event) => {
+      localStorage.clear();
+    })
   }
 
   ngOnInit() {
-
+    this.http.get<Category[]>('/api/category/list').subscribe(rs => {
+      this.categories = rs;
+    });
   }
 
   changeCategory(category: Category){
-    this.eventBus.pushChange('category', category);
+    if(category){
+      this.eventBus.pushChange('category', category);
+    } else this.eventBus.pushChange('category', null);
   }
 
   login(){

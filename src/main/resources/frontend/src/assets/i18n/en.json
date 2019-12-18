@@ -8,6 +8,8 @@
     },
     "CATEGORY": "Category",
     "SEARCH": "Search",
-    "ADMIN": "Admin"
+    "ADMIN": "Admin",
+    "SALE": "For Sale",
+    "MYPAGE": "My Page"
   }
 }

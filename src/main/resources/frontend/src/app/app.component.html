@@ -12,11 +12,18 @@
       <li class="nav-item">
         <a  role="button" class="nav-link" (click)="login()">{{"HEADER.ADMIN" | translate}}</a>
       </li>
+      <li class="nav-item">
+        <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.SALE" | translate}}</a>
+      </li>
+      <li class="nav-item">
+        <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.MYPAGE" | translate}}</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{"HEADER.CATEGORY" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  (click)="changeCategory(null)">All</a>
           <a class="dropdown-item" *ngFor="let item of categories" (click)="changeCategory(item)">{{item.name}}</a>
         </div>
       </li>

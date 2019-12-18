@@ -13,7 +13,7 @@ export class ProductPageComponent implements OnInit {
   categories: Category[] = [];
   cart: Product[] = [];
   listCart: Cart[] = [];
-  category: Category;
+  category: Category = null;
   constructor( private http: HttpClient, private eventBus: EventBusService) { }
 
   ngOnInit() {
@@ -21,17 +21,23 @@ export class ProductPageComponent implements OnInit {
       this.products = rs;
     });
     this.eventBus.listenChange<Category>('category').subscribe(rs => {
-      this.category = rs;
-      if(this.category != null){
+      if(rs){
+        this.category = rs;
+        if(this.category != null){
+          this.http.get<Product[]>('/api/product/list').subscribe(rs => {
+            this.products = rs;
+            this.products = this.products.filter(rs => {
+              return rs.categoryId === this.category.id;
+            });
+          });
+        }
+      } else {
         this.http.get<Product[]>('/api/product/list').subscribe(rs => {
           this.products = rs;
-          this.products = this.products.filter(rs => {
-            return rs.categoryId === this.category.id;
-          });
         });
       }
     });
-    this.eventBus.listenChange<Category[]>('categories').subscribe(rs => {
+    this.http.get<Category[]>('/api/category/list').subscribe(rs => {
       this.categories = rs;
     });
   }

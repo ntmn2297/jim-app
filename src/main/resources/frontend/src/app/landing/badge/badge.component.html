@@ -7,6 +7,7 @@
       <fa-icon style="padding-right: 5px" [icon]="faBookMark"></fa-icon>
     </button>
     <div class="dropdown-menu" >
+      <a class="dropdown-item"  (click)="changeCategory(null)">All</a>
       <a class="dropdown-item" *ngFor="let category of categories" (click)="changeCategory(category)">{{category.name}}</a>
     </div>
   </div>

@@ -3,6 +3,7 @@
   import {EventBusService} from "../../service/event-bus.service";
   import {BsModalRef, BsModalService, ModalOptions} from "ngx-bootstrap";
   import {ShoppingCartComponent} from "../shopping-cart/shopping-cart.component";
+  import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-badge',
@@ -18,7 +19,7 @@ export class BadgeComponent implements OnInit {
   bsModalRef: BsModalRef;
   dialogConfig: ModalOptions = {};
   categories: Category[] = [];
-  constructor(private eventBus: EventBusService, private modalService: BsModalService) {}
+  constructor(private eventBus: EventBusService, private modalService: BsModalService, private http: HttpClient) {}
 
   ngOnInit() {
     this.cart = JSON.parse(localStorage.getItem('listProductOfCart')) || [];
@@ -29,7 +30,7 @@ export class BadgeComponent implements OnInit {
     this.eventBus.listenChange<Cart[]>('listCart').subscribe(rs => {
       this.listCart = rs;
     });
-    this.eventBus.listenChange<Category[]>('categories').subscribe(rs => {
+    this.http.get<Category[]>('/api/category/list').subscribe(rs => {
       this.categories = rs;
     })
   }
@@ -44,7 +45,9 @@ export class BadgeComponent implements OnInit {
   }
 
   changeCategory(category: Category){
-    this.eventBus.pushChange('category', category);
+    if(category){
+      this.eventBus.pushChange('category', category);
+    } else this.eventBus.pushChange('category', null);
   }
 
 }

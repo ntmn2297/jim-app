@@ -12,16 +12,6 @@ export class LoginDialogComponent implements OnInit {
   ngOnInit() {
   }
 
-  openLoginInfo(){
-    (document.querySelector('.b-form') as HTMLElement).style.opacity = '0.01';
-    (document.querySelector('.box-form') as HTMLElement).style.left = '-37%';
-    (document.querySelector('.box-info') as HTMLElement).style.right = '-37%';
-  }
 
-  closeLoginInfo(){
-    (document.querySelector('.b-form') as HTMLElement).style.opacity = '1';
-    (document.querySelector('.box-form') as HTMLElement).style.left = '0';
-    (document.querySelector('.box-info') as HTMLElement).style.right = '-5px';
-  }
 
 }

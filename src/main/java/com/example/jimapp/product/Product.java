@@ -23,16 +23,19 @@ public class Product {
 
     private Long categoryId;
 
+    private Long userId;
+
     public Product() {
     }
 
-    public Product(String name, @Length(max = 2000) String detail, Double price, Long quantity, String img, Long categoryId) {
+    public Product(String name, @Length(max = 2000) String detail, Double price, Long quantity, String img, Long categoryId, Long userId) {
         this.name = name;
         this.detail = detail;
         this.price = price;
         this.quantity = quantity;
         this.img = img;
         this.categoryId = categoryId;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -89,6 +92,28 @@ public class Product {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", detail='" + detail + '\'' +
+                ", price=" + price +
+                ", quantity=" + quantity +
+                ", img='" + img + '\'' +
+                ", categoryId=" + categoryId +
+                ", userId=" + userId +
+                '}';
     }
 }
 
