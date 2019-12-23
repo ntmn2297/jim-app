@@ -24,6 +24,7 @@ export class LoginDialogComponent implements OnInit {
       this.user = rs;
       localStorage.setItem('user', JSON.stringify(this.user));
       this.eventBus.pushChange('user', this.user);
+      window.location.pathname = "/landing";
       this.bsModalRef.hide();
     });
   }

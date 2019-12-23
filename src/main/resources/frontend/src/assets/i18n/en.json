@@ -15,5 +15,8 @@
     "USER": "User",
     "ORDER": "Order",
     "LOGOUT": "Log Out"
+  },
+  "BACKOFFICE": {
+
   }
 }

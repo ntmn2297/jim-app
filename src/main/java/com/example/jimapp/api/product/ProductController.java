@@ -26,9 +26,20 @@ public class ProductController {
         return productRepository.saveAll(products);
     }
 
+    @PostMapping("/delete/{Id}")
+    @ResponseBody
+    public void deleteById(@PathVariable Long Id){
+        productRepository.deleteById(Id);
+    }
+
     @GetMapping("/{id}")
     public Optional<Product> findById(@PathVariable Long id){
         return productRepository.findById(id);
     }
 
+    @PostMapping("/user-product/{userId}")
+    @ResponseBody
+    public Iterable<Product> findByUserId(@PathVariable Long userId){
+        return productRepository.findByUserId(userId);
+    }
 }

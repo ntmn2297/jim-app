@@ -221,6 +221,14 @@ $ease-out-quad:cubic-bezier(0.25, 0.46, 0.45, 0.94);
     background-color: #007BFF;
     z-index: 30;
   }
+
+  .label-soldout{
+    right: 15px;
+    color: #FFF;
+    background-color: red;
+    z-index: 30;
+  }
+
   .label{
     position: absolute;
     width: 40px;

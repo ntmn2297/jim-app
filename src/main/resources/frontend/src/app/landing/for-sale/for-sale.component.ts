@@ -8,6 +8,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 })
 export class ForSaleComponent implements OnInit {
 
+  user: user;
   categories: Category[] = [];
   item: Product = {
     id: null,
@@ -22,6 +23,7 @@ export class ForSaleComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user')) || null;
     this.http.get<Category[]>('/api/category/list').subscribe(rs => {
       this.categories = rs;
     });
@@ -35,7 +37,8 @@ export class ForSaleComponent implements OnInit {
       "price": this.item.price,
       "quantity": this.item.quantity,
       "img": this.item.img,
-      "categoryId": this.item.categoryId
+      "categoryId": this.item.categoryId,
+      "userId": this.user.id || null
     }];
     let header: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
     this.http.post('/api/product/save', JSON.stringify(param), {headers: header}).subscribe(rs => {

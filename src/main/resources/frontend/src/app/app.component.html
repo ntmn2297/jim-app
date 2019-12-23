@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="navbar-brand logo" href="#">Jimmy<span>+</span></a>
+  <a class="navbar-brand logo" routerLink="landing">Jimmy<span>+</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,13 +9,10 @@
       <li class="nav-item" *ngIf="!user">
         <a  role="button" class="nav-link" (click)="login()">{{"HEADER.LOGIN" | translate}}</a>
       </li>
-      <li class="nav-item" *ngIf="user">
-        <a  role="button" class="nav-link" (click)="login()">{{"HEADER.LOGOUT" | translate}}</a>
-      </li>
       <li class="nav-item">
         <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.SALE" | translate}}</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="user && user.level === 'user'">
         <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.MYPAGE" | translate}}</a>
       </li>
       <li class="nav-item">
@@ -26,10 +23,10 @@
           {{"HEADER.ADMIN" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">{{"HEADER.USER" | translate}}</a>
-          <a class="dropdown-item" href="#">{{"HEADER.ORDER" | translate}}</a>
-          <a class="dropdown-item" href="#">{{"HEADER.PRODUCT" | translate}}</a>
-          <a class="dropdown-item" href="#">{{"HEADER.CATEGORY" | translate}}</a>
+          <a class="dropdown-item" routerLink="backoffice/user-page">{{"HEADER.USER" | translate}}</a>
+          <a class="dropdown-item" routerLink="backoffice/order-page">{{"HEADER.ORDER" | translate}}</a>
+          <a class="dropdown-item" routerLink="backoffice/product-page">{{"HEADER.PRODUCT" | translate}}</a>
+          <a class="dropdown-item" routerLink="backoffice/category-page">{{"HEADER.CATEGORY" | translate}}</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -51,13 +48,12 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0" style="padding-right: 10px">
-      <input class="form-control mr-sm-2" type="text" placeholder="{{'HEADER.SEARCH' | translate}}" aria-label="Search">
-      <!--      <ng2-completer [inputId]="'searchMarket'" [inputClass]="'searchinput'" [placeholder]="'Search event'"-->
-      <!--                     [(ngModel)]="searchStr" [datasource]="" (selected)="onEventSelected($event)" [minSearchLength]="3">-->
-      <!--      </ng2-completer>-->
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{"HEADER.SEARCH" | translate}}</button>
-    </form>
+    <button *ngIf="user" style="margin: 5px" type="button" class="btn btn-primary">
+      Hello {{user.name}}
+    </button>
+    <button *ngIf="user" style="margin: 5px" type="button" class="btn btn-danger">
+      Log Out
+    </button>
     <select class="language" #langSelect (change)="translate.use(langSelect.value)" aria-label="Lang">
       <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
     </select>

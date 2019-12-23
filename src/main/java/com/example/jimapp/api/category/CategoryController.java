@@ -24,4 +24,10 @@ public class CategoryController {
     public Iterable<Category> saveCategories(@RequestBody List<Category> categories){
         return categoryRepository.saveAll(categories);
     }
+
+    @PostMapping("/delete/{Id}")
+    @ResponseBody
+    public void deleteById(@PathVariable Long Id){
+        categoryRepository.deleteById(Id);
+    }
 }

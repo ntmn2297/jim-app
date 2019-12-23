@@ -7,6 +7,7 @@ import {OrderPageComponent} from "./order-page/order-page.component";
 import {ProductPageComponent} from "./product-page/product-page.component";
 import {UserPageComponent} from "./user-page/user-page.component";
 
+
 const routes: Routes = [
   { path: '', component: BackofficeComponent },
   { path: 'category-page', component: CategoryPageComponent },

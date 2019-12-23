@@ -29,7 +29,8 @@ export class AppComponent implements OnInit{
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|vi/) ? browserLang : 'en');
     window.addEventListener('beforeunload', (event) => {
-      localStorage.clear();
+      localStorage.removeItem('listProductOfCart');
+      localStorage.removeItem('listCart');
     });
   }
 

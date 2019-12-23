@@ -30,7 +30,8 @@
           <div class="left-block">
             <a class="product_img_link" target="_blank"><img class="img-responsive" src="{{product.img}}" alt="Affiliates banner 300x250" /></a>
             <a class="quick-view btn-tooltip" ><i class="fa fa-eye"></i></a>
-            <span class="label-new label">New</span>
+            <span class="label-new label" *ngIf="product.quantity > 0">New</span>
+            <span class="label-new label" *ngIf="product.quantity == 0">New</span>
           </div>
           <div class="right-block">
             <div class="product-meta">

@@ -1,1 +1,28 @@
-<p>product-page works!</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Product Name</th>
+    <th scope="col">Price</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Category</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody *ngIf="products.length > 0">
+  <tr *ngFor="let item of products">
+    <td>{{item.id}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.price | number}} VND</td>
+    <td>{{item.quantity | number}}</td>
+    <td>{{categoryName(item.categoryId)}}</td>
+    <td>
+      <button  class="btn btn-danger" (click)="delete(item)">Delete</button>
+    </td>
+  </tr>
+  </tbody>
+  <tbody *ngIf="products.length == 0">
+  <tr>No Record Fond</tr>
+  </tbody>
+</table>
+<button class="btn btn-warning update" routerLink="landing/for-sale">Add Product</button>
