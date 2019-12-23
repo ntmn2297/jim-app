@@ -10,6 +10,10 @@
     "SEARCH": "Search",
     "ADMIN": "Admin",
     "SALE": "For Sale",
-    "MYPAGE": "My Page"
+    "MYPAGE": "My Page",
+    "PRODUCT": "Products",
+    "USER": "User",
+    "ORDER": "Order",
+    "LOGOUT": "Log Out"
   }
 }

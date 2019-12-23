@@ -19,6 +19,13 @@ export class ProductPageComponent implements OnInit {
   ngOnInit() {
     this.http.get<Product[]>('/api/product/list').subscribe(rs => {
       this.products = rs;
+      this.products = this.products.sort(function (a,b) {
+        if (a.categoryId > b.categoryId)
+          return 1;
+        if (a.categoryId < b.categoryId)
+          return -1;
+        return 0;
+      });
     });
     this.eventBus.listenChange<Category>('category').subscribe(rs => {
       if(rs){

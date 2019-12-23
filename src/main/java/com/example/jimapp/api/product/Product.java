@@ -1,4 +1,4 @@
-package com.example.jimapp.product;
+package com.example.jimapp.api.product;
 
 import org.hibernate.validator.constraints.Length;
 

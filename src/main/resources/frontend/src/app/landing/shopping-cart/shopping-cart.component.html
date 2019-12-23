@@ -27,7 +27,14 @@
               <td>
                 <div class="price-wrap"> <var class="price">{{product.product.price * product.amount | number}} VND</var> <small class="text-muted">Each:{{product.product.price | number}}VND</small> </div>
               </td>
-              <td class="text-right d-none d-md-block"> <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true"> <i class="fa fa-heart"></i></a> <a (click)="removeProduct(product)" class="btn btn-light" data-abc="true"> Remove</a> </td>
+              <td class="text-right d-none d-md-block">
+                <a data-original-title="Save to Wishlist" title="" href="" class="btn btn-light" data-toggle="tooltip" data-abc="true">
+                  <i class="fa fa-heart"></i>
+                </a>
+                <a style="color: white" (click)="removeProduct(product)" class="btn btn-light" data-abc="true">
+                  Remove
+                </a>
+              </td>
             </tr>
             </tbody>
           </table>
@@ -41,7 +48,7 @@
             <dt>Total price: </dt>
             <dd class="text-right ml-3">{{totalPrice | number}}VND</dd>
           </dl>
-          <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a> <a href="#" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
+          <hr> <a href="#" class="btn btn-out btn-primary btn-square btn-main" data-abc="true"> Make Purchase </a> <a style="color: #ffffff" (click)="bsModalRef.hide()" class="btn btn-out btn-success btn-square btn-main mt-2" data-abc="true">Continue Shopping</a>
         </div>
       </div>
     </aside>

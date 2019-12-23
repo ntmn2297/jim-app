@@ -11,14 +11,13 @@ import { BadgeComponent } from './badge/badge.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {TranslateModule} from "@ngx-translate/core";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { BackofficeComponent } from './backoffice/backoffice.component';
 import { ForSaleComponent } from './for-sale/for-sale.component';
 import { MyPageComponent } from './my-page/my-page.component';
 
 
 
 @NgModule({
-  declarations: [LandingComponent, ProductPageComponent, BadgeComponent, ShoppingCartComponent, BackofficeComponent, ForSaleComponent, MyPageComponent],
+  declarations: [LandingComponent, ProductPageComponent, BadgeComponent, ShoppingCartComponent, ForSaleComponent, MyPageComponent],
   imports: [
     CommonModule,
     LandingRoutingModule,

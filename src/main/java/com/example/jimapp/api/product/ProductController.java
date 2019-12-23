@@ -1,4 +1,4 @@
-package com.example.jimapp.product;
+package com.example.jimapp.api.product;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

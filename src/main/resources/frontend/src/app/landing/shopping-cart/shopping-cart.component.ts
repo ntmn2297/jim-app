@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventBusService} from "../../service/event-bus.service";
+import {BsModalRef} from "ngx-bootstrap";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,7 +13,7 @@ export class ShoppingCartComponent implements OnInit {
   listCart: Cart[] = [];
   cart: Product[] = [];
 
-  constructor(private eventBus: EventBusService) { }
+  constructor(private eventBus: EventBusService, private bsModalRef: BsModalRef) { }
 
   ngOnInit() {
     this.listCart.forEach(r => {

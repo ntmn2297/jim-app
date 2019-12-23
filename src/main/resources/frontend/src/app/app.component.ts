@@ -6,6 +6,7 @@ import {EventBusService} from "./service/event-bus.service";
 import {TranslateService} from "@ngx-translate/core";
 import {LoginDialogComponent} from "./login-dialog/login-dialog.component";
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit{
   searchStr: string;
   dataService: CompleterData;
   timeAccess: Date = new Date();
+  user: user;
 
   constructor(private modalService: BsModalService, private http: HttpClient, private eventBus : EventBusService, private completerService: CompleterService, private translate: TranslateService) {
     this.dataService = this.completerService.remote('/api/product/list','name','name');
@@ -28,10 +30,14 @@ export class AppComponent implements OnInit{
     translate.use(browserLang.match(/en|vi/) ? browserLang : 'en');
     window.addEventListener('beforeunload', (event) => {
       localStorage.clear();
-    })
+    });
   }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user')) || null;
+    this.eventBus.listenChange<user>('user').subscribe(rs => {
+      this.user = rs;
+    });
     this.http.get<Category[]>('/api/category/list').subscribe(rs => {
       this.categories = rs;
     });

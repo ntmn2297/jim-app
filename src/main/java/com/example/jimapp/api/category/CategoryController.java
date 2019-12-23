@@ -1,4 +1,4 @@
-package com.example.jimapp.category;
+package com.example.jimapp.api.category;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

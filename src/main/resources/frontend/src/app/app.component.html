@@ -6,11 +6,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
+      <li class="nav-item" *ngIf="!user">
         <a  role="button" class="nav-link" (click)="login()">{{"HEADER.LOGIN" | translate}}</a>
       </li>
-      <li class="nav-item">
-        <a  role="button" class="nav-link" (click)="login()">{{"HEADER.ADMIN" | translate}}</a>
+      <li class="nav-item" *ngIf="user">
+        <a  role="button" class="nav-link" (click)="login()">{{"HEADER.LOGOUT" | translate}}</a>
       </li>
       <li class="nav-item">
         <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.SALE" | translate}}</a>
@@ -18,8 +18,22 @@
       <li class="nav-item">
         <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.MYPAGE" | translate}}</a>
       </li>
+      <li class="nav-item">
+        <a  role="button" class="nav-link" routerLink="landing">{{"HEADER.PRODUCT" | translate}}</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="user && user.level === 'admin'">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{"HEADER.ADMIN" | translate}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">{{"HEADER.USER" | translate}}</a>
+          <a class="dropdown-item" href="#">{{"HEADER.ORDER" | translate}}</a>
+          <a class="dropdown-item" href="#">{{"HEADER.PRODUCT" | translate}}</a>
+          <a class="dropdown-item" href="#">{{"HEADER.CATEGORY" | translate}}</a>
+        </div>
+      </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{"HEADER.CATEGORY" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -28,7 +42,7 @@
         </div>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{"HEADER.CONTACT.CONTACT" | translate}}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -49,5 +63,4 @@
     </select>
   </div>
 </nav>
-
 <router-outlet></router-outlet>

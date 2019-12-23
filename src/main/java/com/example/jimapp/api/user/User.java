@@ -1,6 +1,4 @@
-package com.example.jimapp.user;
-
-import org.hibernate.validator.constraints.Email;
+package com.example.jimapp.api.user;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,18 +28,9 @@ public class User {
 
     private String level;
 
-    public User() {
-    }
+    private String token;
 
-    public User(String name, String loginName, String phone, String email, String passWord, String gender, Date dateOfBirth, String level) {
-        this.name = name;
-        this.loginName = loginName;
-        this.phone = phone;
-        this.email = email;
-        this.passWord = passWord;
-        this.gender = gender;
-        this.dateOfBirth = dateOfBirth;
-        this.level = level;
+    public User() {
     }
 
     public Long getId() {
@@ -116,6 +105,14 @@ public class User {
         this.level = level;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -128,6 +125,7 @@ public class User {
                 ", gender='" + gender + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", level='" + level + '\'' +
+                ", token='" + token + '\'' +
                 '}';
     }
 }

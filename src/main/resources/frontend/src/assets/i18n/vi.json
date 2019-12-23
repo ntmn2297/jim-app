@@ -10,6 +10,8 @@
     "SEARCH": "Tìm Kiếm",
     "ADMIN": "Quản Lý",
     "SALE": "Rao Bán",
-    "MYPAGE": "Tin Của Tôi"
+    "MYPAGE": "Tin Của Tôi",
+    "PRODUCT": "Sản Phẩm",
+    "LOGOUT": "Đăng Xuất"
   }
 }

@@ -11,7 +11,8 @@ const routes: Routes = [
   {
     path: 'landing',
     loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule)
-  }
+  },
+  { path: 'backoffice', loadChildren: () => import('./backoffice/backoffice.module').then(m => m.BackofficeModule) }
 ];
 
 @NgModule({
