@@ -1,17 +1,27 @@
-.badge {
+table {
+  margin: 10px 10px 0 10px;
+  text-align: center;
+  border-collapse: collapse;
+  width: 98%;
+
+}
+
+img{
   width: 100px;
-  padding: 20px;
-  margin: 5px;
-  cursor: pointer;
+  height: 100px;
 }
 
-.bo-menu{
-  position: relative;
-  margin: 10px 25% 10px 25%;
-  padding: 10px;
-  background-color: #e3f2fd;
+thead {
+  background: #00cde5;
+  color: #ffffff;
 }
 
-.bo-group{
-  margin: 0 25% 0 25%;
+td, th {
+  border: 1px solid #dddddd;
+  padding: 8px;
 }
+
+tr:nth-child(even) {
+  background-color: #B3E5FC;
+}
+

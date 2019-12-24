@@ -6,6 +6,11 @@ table {
 
 }
 
+img{
+  width: 100px;
+  height: 100px;
+}
+
 thead {
   background: #00cde5;
   color: #ffffff;
@@ -20,6 +25,3 @@ tr:nth-child(even) {
   background-color: #B3E5FC;
 }
 
-.update{
-  margin: 10px;
-}

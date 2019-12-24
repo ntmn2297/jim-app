@@ -41,4 +41,19 @@ public class UserController {
         this.saveUser(user);
         return user;
     }
+
+
+    @PostMapping("/update/{Id}/{Name}")
+    @ResponseBody
+    public User update(@PathVariable Long Id, @PathVariable String Name, @RequestBody User newUser){
+        User user = userRepository.findByIdAndName(Id, Name);
+        if(newUser.getName() != null) user.setName(newUser.getName());
+        if(newUser.getPhone() != null) user.setPhone(newUser.getPhone());
+        if(newUser.getEmail() != null) user.setEmail(newUser.getEmail());
+        if(newUser.getPassWord() != null) user.setPassWord(Base64.getUrlEncoder().encodeToString(newUser.getPassWord().getBytes()));
+        if(newUser.getLevel() != null) user.setLevel(newUser.getLevel());
+        this.saveUser(user);
+        return user;
+    }
+
 }

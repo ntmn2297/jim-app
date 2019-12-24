@@ -2,14 +2,17 @@
   <thead>
   <tr>
     <th scope="col">Id</th>
+    <th scope="col">Category Image</th>
     <th scope="col">Category Name</th>
     <th scope="col">Detail</th>
-    <th scope="col"></th>
+    <th scope="col"><button class="btn btn-warning update" (click)="addCategory()">Add Product</button>
+    </th>
   </tr>
   </thead>
   <tbody *ngIf="categories.length > 0">
   <tr *ngFor="let item of categories">
     <td>{{item.id}}</td>
+    <td><img src="{{item.img}}"></td>
     <td>{{item.name}}</td>
     <td>{{item.detail}}</td>
     <td>
