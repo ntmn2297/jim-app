@@ -1,0 +1,39 @@
+<div class="header">
+  <span>Your Order</span>
+  <span style="float: right; cursor: pointer; font-size: larger" (click)="bsModalRef.hide()">x</span>
+</div>
+<div class="for-sale">
+  <div class="form-group">
+    <div class="col-md-10">
+      <input [ngClass]="error && item.name == '' ? 'error':''" [(ngModel)]="item.name"  placeholder="Your Name" class="form-control input-md" required="" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-10">
+      <input [ngClass]="error && item.phone == '' ? 'error':''" [(ngModel)]="item.phone"  placeholder="Your Phone Number" class="form-control input-md" required="" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-10">
+      <input [ngClass]="error && item.address == '' ? 'error':''" [(ngModel)]="item.address"  placeholder="Your Address" class="form-control input-md" required="" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <div style="background: #cccccc" class="col-md-12">
+      <span>Give us your information to finish your order with the best service</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <div class="col-md-6">
+          <button style="margin: 5px 5px 5px 45px;width: 150px" class="btn btn-primary" (click)="submit()">Submit</button>
+        </div>
+        <div class="col-md-4">
+          <dt>Your Order Price: </dt>
+          <span>{{totalPrice | number}}VND</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -25,9 +25,23 @@ public class CategoryController {
         return categoryRepository.saveAll(categories);
     }
 
+    private void saveCategory(Category category){
+        categoryRepository.save(category);
+    }
+
     @PostMapping("/delete/{Id}")
     @ResponseBody
     public void deleteById(@PathVariable Long Id){
         categoryRepository.deleteById(Id);
+    }
+
+    @PostMapping("/update/{Id}/{Name}")
+    @ResponseBody
+    public Category update(@PathVariable Long Id, @PathVariable String Name, @RequestBody Category newCategory){
+        Category category = categoryRepository.findByIdAndName(Id, Name);
+        if(newCategory.getDetail() != null) category.setDetail(newCategory.getDetail());
+        if(newCategory.getImg() != null) category.setImg(newCategory.getImg());
+        this.saveCategory(category);
+        return category;
     }
 }

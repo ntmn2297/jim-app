@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventBusService} from "../../service/event-bus.service";
-import {BsModalRef} from "ngx-bootstrap";
+import {BsModalRef, BsModalService, ModalModule, ModalOptions} from "ngx-bootstrap";
+import {CheckOutDialogComponent} from "./check-out-dialog/check-out-dialog.component";
 
 @Component({
   selector: 'app-shopping-cart',
@@ -12,10 +13,13 @@ export class ShoppingCartComponent implements OnInit {
   totalPrice: number = 0;
   listCart: Cart[] = [];
   cart: Product[] = [];
+  dialogOption: ModalOptions = {};
+  user: user;
 
-  constructor(private eventBus: EventBusService, private bsModalRef: BsModalRef) { }
+  constructor(private eventBus: EventBusService, private bsModalRef: BsModalRef, private modal: BsModalService) { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
     this.listCart.forEach(r => {
       this.totalPrice += r.totalPrice;
     })
@@ -46,8 +50,19 @@ export class ShoppingCartComponent implements OnInit {
     this.cart.forEach(r => {
       if(r.id == cart.product.id) this.cart.splice(this.cart.indexOf(r), cart.amount);
     });
+    this.totalPrice -= cart.totalPrice;
+    if(this.totalPrice < 0) this.totalPrice = 0;
     localStorage.setItem('listProductOfCart', JSON.stringify(this.cart));
     localStorage.setItem('listCart', JSON.stringify(this.listCart));
   }
 
+  checkOut(){
+    this.dialogOption.initialState = {
+      user: this.user,
+      listCart: this.listCart,
+      totalPrice: this.totalPrice
+    };
+    this.bsModalRef.hide();
+    this.modal.show(CheckOutDialogComponent, this.dialogOption);
+  }
 }

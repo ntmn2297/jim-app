@@ -1,1 +1,36 @@
-<p>order-page works!</p>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">Id</th>
+    <th scope="col">User Name</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Total Price</th>
+    <th scope="col">Status</th>
+    <th scope="col">Detail</th>
+  </tr>
+  </thead>
+  <tbody *ngIf="orders.length > 0">
+  <tr *ngFor="let item of orders">
+    <td>{{item.id}}</td>
+    <td>{{item.name}}</td>
+    <td>{{item.phone}}</td>
+    <td>{{item.price | number}} VND</td>
+    <td>
+      <label>
+        <select [(ngModel)]="item.status" (ngModelChange)="canUpdate = true">
+          <option [selected]="item.status == 'WAITING'" value="WAITING">WAITING</option>
+          <option [selected]="item.status == 'CANCELED'" value="CANCELED">CANCELED</option>
+          <option [selected]="item.status == 'FINISHED'" value="FINISHED">FINISHED</option>
+        </select>
+      </label>
+    </td>
+    <td>
+      <button  class="btn btn-success" (click)="detail(item)">Detail</button>
+      <button [ngClass]="canUpdate ? '':'disabled'" class="btn btn-info" style="margin-left: 5px" (click)="updateOrder(item)">Update</button>
+    </td>
+  </tr>
+  </tbody>
+  <tbody *ngIf="orders.length == 0">
+  <tr>No Record Fond</tr>
+  </tbody>
+</table>

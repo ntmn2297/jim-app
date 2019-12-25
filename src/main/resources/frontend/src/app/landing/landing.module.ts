@@ -13,11 +13,14 @@ import {TranslateModule} from "@ngx-translate/core";
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ForSaleComponent } from './for-sale/for-sale.component';
 import { MyPageComponent } from './my-page/my-page.component';
+import { CheckOutDialogComponent } from './shopping-cart/check-out-dialog/check-out-dialog.component';
+import { MessageCheckOutComponent } from './shopping-cart/message-check-out/message-check-out.component';
+import { ShowProductDetailComponent } from './product-page/show-product-detail/show-product-detail.component';
 
 
 
 @NgModule({
-  declarations: [LandingComponent, ProductPageComponent, BadgeComponent, ShoppingCartComponent, ForSaleComponent, MyPageComponent],
+  declarations: [LandingComponent, ProductPageComponent, BadgeComponent, ShoppingCartComponent, ForSaleComponent, MyPageComponent, CheckOutDialogComponent, MessageCheckOutComponent, ShowProductDetailComponent],
   imports: [
     CommonModule,
     LandingRoutingModule,
@@ -28,6 +31,6 @@ import { MyPageComponent } from './my-page/my-page.component';
     FontAwesomeModule,
     TranslateModule,
   ],
-  entryComponents: [ ShoppingCartComponent]
+  entryComponents: [ ShoppingCartComponent, CheckOutDialogComponent, MessageCheckOutComponent, ShowProductDetailComponent]
 })
 export class LandingModule { }

@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {Observable, throwError} from 'rxjs';
 import {catchError, finalize, retry, timeout} from 'rxjs/operators';
 import {NgxSpinnerService} from 'ngx-spinner';
+import {tryCatch} from "rxjs/internal-compatibility";
 
 @Injectable()
 export class GlobalHttpInterceptor implements HttpInterceptor {
@@ -24,7 +25,8 @@ export class GlobalHttpInterceptor implements HttpInterceptor {
     });
     this.spinner.show();
     return next.handle(req).pipe(
-      timeout(3000),
+      timeout(30000),
+      retry(2),
       catchError((error: HttpErrorResponse) => {
         // TODO: Add error handling logic here
         alert(`HTTP Error: ${req.url}`);

@@ -9,16 +9,16 @@
       <li class="nav-item" *ngIf="!user">
         <a  role="button" class="nav-link" (click)="login()">{{"HEADER.LOGIN" | translate}}</a>
       </li>
-      <li class="nav-item" *ngIf="user && user.level === 'user'">
+      <li class="nav-item" *ngIf="user != null && user.level === 'user'">
         <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.SALE" | translate}}</a>
       </li>
-      <li class="nav-item" *ngIf="user && user.level === 'user'">
+      <li class="nav-item" *ngIf="user != null && user.level === 'user'">
         <a  role="button" class="nav-link" routerLink="landing/for-sale">{{"HEADER.MYPAGE" | translate}}</a>
       </li>
       <li class="nav-item">
         <a  role="button" class="nav-link" routerLink="landing">{{"HEADER.PRODUCT" | translate}}</a>
       </li>
-      <li class="nav-item dropdown" *ngIf="user && user.level === 'admin'">
+      <li class="nav-item dropdown" *ngIf="user != null && user.level === 'admin'">
         <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           {{"HEADER.ADMIN" | translate}}
         </a>
@@ -48,10 +48,10 @@
         </div>
       </li>
     </ul>
-    <button *ngIf="user" style="margin: 5px" type="button" class="btn btn-primary">
+    <button *ngIf="user != null" style="margin: 5px" type="button" class="btn btn-primary">
       Hello {{user.name}}
     </button>
-    <button *ngIf="user" style="margin: 5px" type="button" class="btn btn-danger">
+    <button *ngIf="user != null" (click)="logOut()" style="margin: 5px" type="button" class="btn btn-danger">
       Log Out
     </button>
     <select class="language" #langSelect (change)="translate.use(langSelect.value)" aria-label="Lang">

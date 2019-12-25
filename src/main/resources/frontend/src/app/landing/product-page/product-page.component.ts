@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {EventBusService} from "../../service/event-bus.service";
+import {BsModalService, ModalOptions} from "ngx-bootstrap";
+import {ShowProductDetailComponent} from "./show-product-detail/show-product-detail.component";
 
 @Component({
   selector: 'app-product-page',
@@ -14,7 +16,8 @@ export class ProductPageComponent implements OnInit {
   cart: Product[] = [];
   listCart: Cart[] = [];
   category: Category = null;
-  constructor( private http: HttpClient, private eventBus: EventBusService) { }
+  dialogOption: ModalOptions = {};
+  constructor( private http: HttpClient, private eventBus: EventBusService, private modal: BsModalService) { }
 
   ngOnInit() {
     this.http.get<Product[]>('/api/product/list').subscribe(rs => {
@@ -50,7 +53,11 @@ export class ProductPageComponent implements OnInit {
   }
 
   showProductDetail(product: Product){
-
+    this.dialogOption.initialState = {
+      categories: this.categories,
+      product: product
+    };
+    this.modal.show(ShowProductDetailComponent, this.dialogOption);
   }
 
   addToCart(product: Product){

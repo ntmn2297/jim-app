@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-user-page',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserPageComponent implements OnInit {
 
-  constructor() { }
+  users: user[] = [];
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get<user[]>('/api/user/list').subscribe(rs => {
+      this.users = rs;
+    })
   }
 
 }

@@ -5,7 +5,7 @@
     <th scope="col">Category Image</th>
     <th scope="col">Category Name</th>
     <th scope="col">Detail</th>
-    <th scope="col"><button class="btn btn-warning update" (click)="addCategory()">Add Product</button>
+    <th scope="col"><button class="btn btn-warning update" (click)="addCategory()">Add Category</button>
     </th>
   </tr>
   </thead>
@@ -17,6 +17,7 @@
     <td>{{item.detail}}</td>
     <td>
       <button  class="btn btn-danger" (click)="delete(item)">Delete</button>
+      <button  class="btn btn-info" style="margin-left: 5px" (click)="updateCategory(item)">Update</button>
     </td>
   </tr>
   </tbody>

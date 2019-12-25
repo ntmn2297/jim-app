@@ -1,0 +1,31 @@
+<div class="header">
+  <span>Update Category</span>
+  <span style="float: right; cursor: pointer; font-size: larger" (click)="bsModalRef.hide()">X</span>
+</div>
+<div class="for-sale">
+  <div class="form-group">
+    <div class="col-md-8">
+      <input [(ngModel)]="item.name" name="product_name" placeholder="Product Name" class="form-control input-md" required="" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-8" >
+      <textarea [(ngModel)]="item.detail" style="height: 200px" placeholder="Product Detail" class="form-control"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-8 control-label">Product Image URL:</label>
+    <div class="col-md-8">
+      <input [(ngModel)]="item.img" placeholder="Ect: http://google.com.vn" class="form-control input-md" required="" type="text">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <div class="form-group">
+        <div class="col-md-8">
+          <button class="btn btn-primary" (click)="submit()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

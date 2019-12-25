@@ -16,6 +16,7 @@ import {GlobalHttpInterceptor} from "./global-http-interceptor";
 import {FormsModule} from "@angular/forms";
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
+import { MessageDialogComponent } from './sign-up-page/message-dialog/message-dialog.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,7 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     LoginDialogComponent,
-    SignUpPageComponent
+    SignUpPageComponent,
+    MessageDialogComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -56,6 +58,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     }
     ],
   bootstrap: [AppComponent],
-  entryComponents: [ LoginDialogComponent]
+  entryComponents: [ LoginDialogComponent, MessageDialogComponent]
 })
 export class AppModule {}

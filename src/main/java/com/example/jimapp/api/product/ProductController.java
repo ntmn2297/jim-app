@@ -26,6 +26,10 @@ public class ProductController {
         return productRepository.saveAll(products);
     }
 
+    private void saveProduct(Product product){
+        productRepository.save(product);
+    }
+
     @PostMapping("/delete/{Id}")
     @ResponseBody
     public void deleteById(@PathVariable Long Id){
@@ -41,5 +45,19 @@ public class ProductController {
     @ResponseBody
     public Iterable<Product> findByUserId(@PathVariable Long userId){
         return productRepository.findByUserId(userId);
+    }
+
+    @PostMapping("/update/{Id}/{CategoryId}")
+    @ResponseBody
+    public Product update(@PathVariable Long Id, @PathVariable Long CategoryId, @RequestBody Product newProduct){
+        Product product = productRepository.findByIdAndAndCategoryId(Id, CategoryId);
+        if(newProduct.getName() != null) product.setName(newProduct.getName());
+        if(newProduct.getDetail() != null) product.setDetail(newProduct.getDetail());
+        if(newProduct.getPrice() != null) product.setPrice(newProduct.getPrice());
+        if(newProduct.getQuantity() != null) product.setQuantity(newProduct.getQuantity());
+        if(newProduct.getImg() != null) product.setImg(newProduct.getImg());
+        if(newProduct.getCategoryId() != null) product.setCategoryId(newProduct.getCategoryId());
+        this.saveProduct(product);
+        return product;
     }
 }

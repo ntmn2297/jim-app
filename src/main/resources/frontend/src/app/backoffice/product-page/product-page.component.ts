@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {BsModalService, ModalOptions} from "ngx-bootstrap";
 import {AddProductDialogComponent} from "./add-product-dialog/add-product-dialog.component";
+import {UpdateProductDialogComponent} from "./update-product-dialog/update-product-dialog.component";
 
 @Component({
   selector: 'app-product-page',
@@ -44,6 +45,17 @@ export class ProductPageComponent implements OnInit {
 
   delete(item: Product){
     this.http.post('/api/product/delete/' + item.id,null).subscribe(rs => {
+    })
+  }
+
+  updateProduct(item: Product){
+    this.dialogOption.initialState = {
+      categories: this.categories,
+      item: item,
+    };
+    this.modal.show(UpdateProductDialogComponent, this.dialogOption);
+    this.modal.onHidden.subscribe(rs => {
+      this.getProduct();
     })
   }
 

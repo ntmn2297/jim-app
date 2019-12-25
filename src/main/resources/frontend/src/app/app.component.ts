@@ -50,6 +50,11 @@ export class AppComponent implements OnInit{
     } else this.eventBus.pushChange('category', null);
   }
 
+  logOut(){
+    localStorage.removeItem('user');
+    window.location.pathname = '/landing' ;
+  }
+
   login(){
     this.modalService.show(LoginDialogComponent, {class: 'modal-dialog-centered'});
     (document.querySelector('.modal-content') as HTMLElement).style.border = 'none';

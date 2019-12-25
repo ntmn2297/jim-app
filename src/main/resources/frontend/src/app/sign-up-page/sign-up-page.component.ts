@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {BsDatepickerConfig} from "ngx-bootstrap";
+import {BsDatepickerConfig, BsModalService} from "ngx-bootstrap";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {MessageDialogComponent} from "./message-dialog/message-dialog.component";
 
 @Component({
   selector: 'app-sign-up-page',
@@ -21,7 +22,7 @@ export class SignUpPageComponent implements OnInit {
     gender: '',
     dateOfBirth: null,
     address: '',
-    level: 'USER',
+    level: 'user',
     token: ''
   };
   loginNameError: boolean;
@@ -37,8 +38,9 @@ export class SignUpPageComponent implements OnInit {
     address: true,
     confirm: true
   };
+  confirmError: boolean;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private modal: BsModalService) { }
 
   ngOnInit() {
   }
@@ -67,13 +69,15 @@ export class SignUpPageComponent implements OnInit {
       address: this.item.address != '',
       confirm: this.confirm != ''
     };
-    console.log(this.confirm);
-    console.log(this.item);
-    console.log(this.nullError);
-    if(!this.nullError.name && !this.nullError.loginName && !this.nullError.phone && !this.nullError.email && !this.nullError.password && !this.nullError.gender && !this.nullError.dateOfBirth && !this.nullError.address){
+    if(this.nullError.loginName){
       this.checkLoginName(this.item.loginName);
-      this.checkEmail(this.item.email);
-      this.submit();
+      if(this.nullError.email){
+        this.checkEmail(this.item.email);
+        this.confirmError = this.confirm != this.item.password;
+        if(this.nullError.name && this.nullError.phone  && this.nullError.password && this.nullError.gender && this.nullError.dateOfBirth && this.nullError.address){
+          this.submit();
+        }
+      }
     }
   }
 
@@ -93,7 +97,9 @@ export class SignUpPageComponent implements OnInit {
         "token": this.item.token
       };
       let header: HttpHeaders = new HttpHeaders().set('Content-type','application/json');
-      this.http.post('/api/user/save', JSON.stringify(param), {headers: header}).subscribe(rs => {});
+      this.http.post('/api/user/save', JSON.stringify(param), {headers: header}).subscribe(rs => {
+        this.modal.show(MessageDialogComponent);
+      });
     }
   }
 

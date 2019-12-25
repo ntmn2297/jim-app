@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {AddProductDialogComponent} from "../product-page/add-product-dialog/add-product-dialog.component";
 import {BsModalService, ModalOptions} from "ngx-bootstrap";
 import {AddCategoryDialogComponent} from "./add-category-dialog/add-category-dialog.component";
+import {UpdateProductDialogComponent} from "../product-page/update-product-dialog/update-product-dialog.component";
+import {UpdateCategoryDialogComponent} from "./update-category-dialog/update-category-dialog.component";
 
 @Component({
   selector: 'app-category-page',
@@ -39,6 +41,16 @@ export class CategoryPageComponent implements OnInit {
 
   delete(item: Category){
     this.http.post('/api/category/delete/' + item.id,null).subscribe(rs => {
+    })
+  }
+
+  updateCategory(item: Category){
+    this.dialogOption.initialState = {
+      item: item
+    };
+    this.modal.show(UpdateCategoryDialogComponent, this.dialogOption);
+    this.modal.onHidden.subscribe(rs => {
+      this.getCategories();
     })
   }
 
