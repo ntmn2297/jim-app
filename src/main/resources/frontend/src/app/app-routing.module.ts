@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
+import {SignUpPageComponent} from "./sign-up-page/sign-up-page.component";
 
 
 const routes: Routes = [
@@ -7,6 +8,10 @@ const routes: Routes = [
     path: '',
     redirectTo: 'landing',
     pathMatch: 'full'
+  },
+  {
+    path: 'sign-up',
+    component: SignUpPageComponent
   },
   {
     path: 'landing',

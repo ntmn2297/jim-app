@@ -1,0 +1,84 @@
+<div class="for-sale">
+  <form>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>Your name</label>
+        <input [ngClass]="!nullError.name ? 'error':''" [(ngModel)]="item.name" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="First name" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Your Email</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >@email.com</span>
+          </div>
+          <input [ngClass]="emailError === true ? 'error' : ''"  [(ngModel)]="item.email" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Email" required>
+          <span *ngIf="emailError === true" style="color: red">Your Email Has Been Used</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>Your Address</label>
+        <textarea [ngClass]="!nullError.address ? 'error':''" [(ngModel)]="item.address" [ngModelOptions]="{standalone: true}" class="form-control"  placeholder="Your Address" required></textarea>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label >Your Gender</label>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input [ngClass]="!nullError.gender ? 'error':''" [(ngModel)]="item.gender" [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="Male" >
+            <label class="form-check-label" >
+              Male
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input [ngClass]="!nullError.gender ? 'error':''" [(ngModel)]="item.gender" [ngModelOptions]="{standalone: true}" class="form-check-input" type="radio" value="Female" >
+            <label class="form-check-label" >
+              Female
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>Your Phone Number</label>
+        <input [ngClass]="!nullError.phone ? 'error':''" [(ngModel)]="item.phone" [ngModelOptions]="{standalone: true}" type="text" class="form-control"  placeholder="Phone Number" >
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Your Date Of Birth</label>
+        <input [ngClass]="!nullError.dateOfBirth ? 'error':''"
+               type="text"
+               #dp="bsDatepicker"
+               [bsConfig]="dpConfig"
+               bsDatepicker
+               [(bsValue)]="item.dateOfBirth"
+               [value]="item.dateOfBirth | date:'dd/MM/yyyy'"
+               placement="top"
+               class="form-control"
+        >
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>Your Login Name</label>
+        <input [ngClass]="loginNameError === true ? 'error' : ''" type="text" class="form-control" [(ngModel)]="item.loginName" [ngModelOptions]="{standalone: true}" placeholder="Login Name" required>
+        <span *ngIf="loginNameError === true" style="color: red">Your Login Name Has Been Used</span>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label>Your Password</label>
+        <input type="password" class="form-control" [ngClass]="!nullError.password ? 'error':''" [(ngModel)]="item.password" [ngModelOptions]="{standalone: true}" placeholder="Your Password" required>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <label >Confirm Your Password</label>
+        <input [ngClass]="!nullError.confirm ? 'error':''" [(ngModel)]="confirm" [ngModelOptions]="{standalone: true}" type="password" class="form-control" placeholder="Confirm Your Password" required>
+      </div>
+    </div>
+    <button class="btn btn-primary" type="submit" (click)="check()">Submit form</button>
+  </form>
+</div>

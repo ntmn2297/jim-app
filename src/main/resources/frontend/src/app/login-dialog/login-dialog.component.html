@@ -1,16 +1,17 @@
 <div>
   <div id="formHeader">
     <span>Login</span>
-    <span style="float: right; cursor: pointer; font-size: border" (click)="bsModalRef.hide()">x</span>
+    <span style="float: right; cursor: pointer; font-size: larger" (click)="bsModalRef.hide()">x</span>
   </div>
   <form>
     <input type="text" id="login" name="login" [(ngModel)]="loginName" placeholder="username">
     <input type="password" id="password"  name="login" [(ngModel)]="passWord" placeholder="password">
     <input type="submit" class="btn btn-info" value="Log In" (click)="login(loginName, passWord)">
-    <input type="submit" class="btn btn-danger" value="Sign Up">
+    <input type="submit" class="btn btn-danger" routerLink="sign-up" (click)="bsModalRef.hide()" value="Sign Up">
   </form>
   <div id="formFooter">
     <a class="underlineHover" href="#">Forgot Password?</a>
   </div>
 </div>
+
 

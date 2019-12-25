@@ -8,5 +8,6 @@ class user {
   gender: string;
   dateOfBirth: Date;
   level: string;
+  address: string;
   token: string;
 }

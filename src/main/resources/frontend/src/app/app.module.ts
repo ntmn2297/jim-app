@@ -5,16 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule, HttpClient, HTTP_INTERCEPTORS} from "@angular/common/http";
-  import {CarouselModule, ModalModule} from "ngx-bootstrap";
+  import {BsDatepickerModule, CarouselModule, ModalModule} from "ngx-bootstrap";
 import {EventBusService} from "./service/event-bus.service";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {CompleterService, LocalDataFactory, RemoteDataFactory} from "ng2-completer";
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-import {ShoppingCartComponent} from "./landing/shopping-cart/shopping-cart.component";
 import {GlobalHttpInterceptor} from "./global-http-interceptor";
 import {FormsModule} from "@angular/forms";
+import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -23,7 +25,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    SignUpPageComponent
   ],
   imports: [
     FontAwesomeModule,
@@ -31,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    BsDatepickerModule.forRoot(),
     ModalModule.forRoot(),
     CarouselModule.forRoot(),
     TranslateModule.forRoot({
@@ -40,7 +44,9 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    BsDatepickerModule
   ],
   providers: [EventBusService, CompleterService, LocalDataFactory, RemoteDataFactory,
     {

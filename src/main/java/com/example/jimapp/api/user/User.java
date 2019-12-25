@@ -30,7 +30,22 @@ public class User {
 
     private String token;
 
+    private String address;
+
     public User() {
+    }
+
+    public User(String name, String loginName, String phone, String email, String passWord, String gender, Date dateOfBirth, String level, String token, String address) {
+        this.name = name;
+        this.loginName = loginName;
+        this.phone = phone;
+        this.email = email;
+        this.passWord = passWord;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.level = level;
+        this.token = token;
+        this.address = address;
     }
 
     public Long getId() {
@@ -113,6 +128,14 @@ public class User {
         this.token = token;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -126,6 +149,7 @@ public class User {
                 ", dateOfBirth=" + dateOfBirth +
                 ", level='" + level + '\'' +
                 ", token='" + token + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

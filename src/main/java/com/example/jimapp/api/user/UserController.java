@@ -52,8 +52,22 @@ public class UserController {
         if(newUser.getEmail() != null) user.setEmail(newUser.getEmail());
         if(newUser.getPassWord() != null) user.setPassWord(Base64.getUrlEncoder().encodeToString(newUser.getPassWord().getBytes()));
         if(newUser.getLevel() != null) user.setLevel(newUser.getLevel());
+        if(newUser.getGender() != null) user.setGender(newUser.getGender());
+        if(newUser.getAddress() != null) user.setAddress(newUser.getAddress());
         this.saveUser(user);
         return user;
+    }
+
+    @PostMapping("/check-login-name/{loginName}")
+    @ResponseBody
+    public boolean checkLoginName(@PathVariable String loginName){
+        return userRepository.existsByLoginName(loginName);
+    }
+
+    @PostMapping("/check-email/{email}")
+    @ResponseBody
+    public boolean checkEmail(@PathVariable String email){
+        return userRepository.existsByEmail(email);
     }
 
 }
