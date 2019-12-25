@@ -31,7 +31,7 @@
     "angular-jwt": "^0.1.11",
     "angularjs-bootstrap-datetimepicker": "^1.1.4",
     "bootstrap": "4.1.1",
-    "jquery": "^1.9.1",
+    "jquery": "^3.4.0",
     "ng2-completer": "^3.0.3",
     "ngx-bootstrap": "^5.2.0",
     "ngx-cookie-service": "^2.2.0",
